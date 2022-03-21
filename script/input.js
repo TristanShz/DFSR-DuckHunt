@@ -37,8 +37,8 @@ export default class InputHandler {
 
     //Getting the click position and sending it in the hunter instance
     document.addEventListener("click", (event) => {
-      game.hunter.position.x = event.clientX;
-      game.hunter.position.y = event.clientY;
+      game.hunter.position.x = event.offsetX;
+      game.hunter.position.y = event.offsetY;
     });
   }
 }

@@ -49,14 +49,24 @@ export default class Game {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, this.screenWidth, this.screenHeight);
       ctx.drawImage(this.logo, 15, 0);
-      ctx.drawImage(this.dog, 70, 300);
+      ctx.drawImage(this.dog, 0, 300);
       ctx.fillStyle = "white";
-      ctx.font = "48px duck-font";
+      ctx.font = "48px sans-serif";
       ctx.textAlign = "end";
       ctx.fillText(
         "Press ENTER to start the game",
         this.screenWidth - 15,
         this.screenHeight / 2
+      );
+
+      ctx.font = "20px sans-serif";
+      ctx.textAlign = "end";
+      ctx.fillText(
+        "Control the duck with arrows keys, the hunter have to shoot you as many times as possibles",
+        this.screenWidth - 15,
+        this.screenHeight / 2 + 50,
+        700,
+        700
       );
     }
     //PAUSE SCREEN
@@ -87,9 +97,9 @@ export default class Game {
       ctx.font = "48px duck-font";
       ctx.textAlign = "end";
       ctx.fillText(
-        "Press ENTER to start the game",
+        `${this.checkScore(this.duck.score, this.hunter.score)}`,
         this.screenWidth - 15,
-        this.screenHeight / 2
+        this.screenHeight / 2 - 50
       );
     }
   }
@@ -104,5 +114,15 @@ export default class Game {
     this.gameObjects.forEach((element) => element.reset());
     this.timer = 0;
     this.loopIndex = 0;
+  }
+
+  checkScore(duck, hunter) {
+    let winner;
+    if (duck > hunter) winner = "duck";
+    else if (hunter > duck) winner = "hunter";
+    else if (hunter === duck) return "There is a draw";
+    return `The ${winner} win the game with a score of ${
+      winner == "duck" ? this.duck.score : this.hunter.score
+    }`;
   }
 }

@@ -1,11 +1,15 @@
 canvas {
-  border: 2px solid black;
+  border: 2px solid #000000;
   cursor: crosshair;
 }
 body {
   margin: 0;
   height: 100%;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  padding-top: 75px;
+  background-color: black;
 }
 img {
   display: none;
