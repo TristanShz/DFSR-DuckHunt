@@ -2,8 +2,8 @@ export default class Duck {
   constructor(game) {
     this.game = game;
     this.image = document.getElementById("duck");
-    this.width = 45;
-    this.height = 45;
+    this.width = 55;
+    this.height = 55;
     this.position = {
       x: game.gameWidth / 2,
       y: game.gameHeight / 2,
@@ -58,5 +58,14 @@ export default class Duck {
     if (this.position.y < 0) this.position.y = 0;
     if (this.position.y + this.height > this.game.gameHeight)
       this.position.y = this.game.gameHeight - this.height;
+  }
+
+  reset() {
+    this.position = {
+      x: this.game.gameWidth / 2,
+      y: this.game.gameHeight / 2,
+    };
+    this.score = 0;
+    this.direction = 0;
   }
 }

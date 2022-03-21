@@ -14,23 +14,38 @@ export default class Score {
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
     ctx.fillStyle = "white";
     ctx.font = "24px sans-serif";
+    ctx.textAlign = "start";
     ctx.fillText(
       `Timer : ${this.game.timer}`,
-      this.position.x + 50,
+      this.position.x + 30,
       this.position.y + this.height / 2
     );
     ctx.fillText(
       `Duck : ${this.game.duck.score}`,
-      this.position.x + 550,
+      this.position.x + 330,
       this.position.y + this.height / 2
     );
 
     ctx.fillText(
-      `Hunter : `,
-      this.position.x + 950,
+      `Hunter : ${this.game.hunter.score}`,
+      this.position.x + 630,
       this.position.y + this.height / 2
+    );
+
+    ctx.fillText(
+      "Press ESC to pause the game",
+      this.width - 340,
+      this.position.y + 80
+    );
+
+    ctx.fillText(
+      "Press BACKSPACE to restart",
+      this.width - 340,
+      this.position.y + 130
     );
   }
 
   update() {}
+
+  reset() {}
 }
