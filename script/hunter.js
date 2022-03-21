@@ -21,8 +21,8 @@ export default class Hunter {
     ) {
       this.score++;
       this.position = {
-        x: null,
-        y: null,
+        x: 9999,
+        y: 9999,
       };
     }
   }

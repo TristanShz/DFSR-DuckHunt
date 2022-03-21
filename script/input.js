@@ -22,6 +22,7 @@ export default class InputHandler {
         //ENTER key
         case 13:
           if (game.gamestate === 2) game.gamestate = 1;
+          if (game.gamestate === 3) game.restart();
           break;
         //ESC key
         case 27:
@@ -35,7 +36,7 @@ export default class InputHandler {
       }
     });
 
-    //Getting the click position and sending it in the hunter instance
+    //Getting the click position and sending it in the hunter object
     document.addEventListener("click", (event) => {
       game.hunter.position.x = event.offsetX;
       game.hunter.position.y = event.offsetY;

@@ -9,9 +9,10 @@ export default class Duck {
       y: game.gameHeight / 2,
     };
     this.direction = 0;
-    this.speed = 10;
+    this.speed = 7;
     this.score = 0;
   }
+
   moveLeft() {
     this.position.x += -this.speed;
   }
@@ -52,6 +53,8 @@ export default class Duck {
         this.moveDown();
         break;
     }
+
+    //Check for wall collisions
     if (this.position.x < 0) this.position.x = 0;
     if (this.position.x > this.game.gameWidth - this.width)
       this.position.x = this.game.gameWidth - this.width;

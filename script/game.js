@@ -14,10 +14,11 @@ export default class Game {
   constructor(screenWidth, screenHeight) {
     //Game area
     this.gameWidth = screenWidth;
-    this.gameHeight = screenHeight - 200;
+    this.gameHeight = screenHeight - 130;
     //Game area + score area
     this.screenWidth = screenWidth;
     this.screenHeight = screenHeight;
+
     this.background = document.getElementById("sky");
     this.logo = document.getElementById("logo");
     this.dog = document.getElementById("dog");
@@ -92,30 +93,39 @@ export default class Game {
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, this.screenWidth, this.screenHeight);
       ctx.drawImage(this.logo, 15, 0);
-      ctx.drawImage(this.dog, 70, 300);
+      ctx.drawImage(this.dog, 0, 300);
       ctx.fillStyle = "white";
       ctx.font = "48px duck-font";
       ctx.textAlign = "end";
       ctx.fillText(
         `${this.checkScore(this.duck.score, this.hunter.score)}`,
         this.screenWidth - 15,
-        this.screenHeight / 2 - 50
+        this.screenHeight / 2 - 150
+      );
+      ctx.font = "48px sans-serif";
+      ctx.textAlign = "end";
+      ctx.fillText(
+        "Press ENTER to restart",
+        this.screenWidth - 15,
+        this.screenHeight / 2
       );
     }
   }
 
   update() {
-    if (this.gamestate !== 1) return;
+    if (this.gamestate !== GAMESTATE.RUNNING) return;
     this.gameObjects.forEach((element) => element.update());
-    if (this.timer === 180) this.stop();
+    //Limit of 120 seconds for a party
+    if (this.timer === 120) this.stop();
   }
 
   restart() {
     this.gameObjects.forEach((element) => element.reset());
     this.timer = 0;
     this.loopIndex = 0;
+    this.gamestate = 1;
   }
-
+  //Checking score and return the string with winner or draw announcement
   checkScore(duck, hunter) {
     let winner;
     if (duck > hunter) winner = "duck";
