@@ -9,7 +9,7 @@ export default class Duck {
       y: game.gameHeight / 2,
     };
     this.direction = 0;
-    this.speed = 7;
+    this.speed = 5;
     this.score = 0;
   }
 

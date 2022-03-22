@@ -21,8 +21,14 @@ export default class InputHandler {
           break;
         //ENTER key
         case 13:
-          if (game.gamestate === 2) game.gamestate = 1;
-          if (game.gamestate === 3) game.restart();
+          if (game.gamestate === 2) {
+            game.gamestate = 1;
+            game.sound.play(game.sound.intro);
+          }
+          if (game.gamestate === 3) {
+            game.restart();
+            game.sound.play(game.sound.intro);
+          }
           break;
         //ESC key
         case 27:

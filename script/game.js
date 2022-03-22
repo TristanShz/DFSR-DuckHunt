@@ -2,6 +2,7 @@ import Score from "/script/score.js";
 import Duck from "/script/duck.js";
 import InputHandler from "/script/input.js";
 import Hunter from "/script/hunter.js";
+import Sound from "/script/sound.js";
 
 const GAMESTATE = {
   PAUSED: 0,
@@ -32,6 +33,7 @@ export default class Game {
     this.duck = new Duck(this);
     this.score = new Score(this);
     this.hunter = new Hunter(this);
+    this.sound = new Sound();
     this.gameObjects = [this.duck, this.score, this.hunter];
     new InputHandler(this);
   }

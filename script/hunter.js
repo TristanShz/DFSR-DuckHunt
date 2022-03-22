@@ -20,6 +20,7 @@ export default class Hunter {
       this.position.y <= this.game.duck.position.y + this.game.duck.height
     ) {
       this.score++;
+      this.game.sound.play(this.game.sound.gunshot);
       this.position = {
         x: 9999,
         y: 9999,
